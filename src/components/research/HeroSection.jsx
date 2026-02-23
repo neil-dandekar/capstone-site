@@ -2,21 +2,31 @@ import { FileText, Github, Play, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FadeInSection from "./FadeInSection";
 
+function getAuthorEmail(author) {
+  if (typeof author.link === "string" && author.link.startsWith("mailto:")) {
+    return author.link.replace("mailto:", "");
+  }
+
+  return author.affiliation || "N/A";
+}
+
 function AuthorChip({ name, affiliation, link }) {
+  const email = getAuthorEmail({ affiliation, link });
   const inner = (
-    <span className="inline-flex items-baseline gap-1">
+    <span className="flex flex-col items-center text-center leading-tight">
       <span className="font-medium text-zinc-900 dark:text-zinc-100">{name}</span>
-      <span className="text-xs text-zinc-500 dark:text-zinc-400">{affiliation}</span>
+      <span className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{email}</span>
     </span>
   );
 
-  if (link && link !== "#") {
+  if (typeof link === "string" && link.length > 0 && link !== "#") {
+    const isMailto = link.startsWith("mailto:");
     return (
       <a
         href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:underline underline-offset-2 decoration-blue-400"
+        target={isMailto ? undefined : "_blank"}
+        rel={isMailto ? undefined : "noopener noreferrer"}
+        className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
       >
         {inner}
       </a>
@@ -27,6 +37,8 @@ function AuthorChip({ name, affiliation, link }) {
 }
 
 export default function HeroSection({ content }) {
+  const effectiveToolLink = content.toolLink ?? content.demoLink;
+  const effectivePaperLink = content.paperLink ?? content.paperPlaceholderLink ?? content.codeLink;
   const scrollToBibtex = () => {
     document.getElementById("bibtex")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -57,13 +69,10 @@ export default function HeroSection({ content }) {
         </FadeInSection>
 
         <FadeInSection delay={240}>
-          <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
-            {content.authors.map((author, index) => (
-              <span key={author.name} className="flex items-center gap-1">
+          <div className="mt-7 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm">
+            {content.authors.map((author) => (
+              <span key={author.name} className="flex items-center">
                 <AuthorChip {...author} />
-                {index < content.authors.length - 1 && (
-                  <span className="text-zinc-300 dark:text-zinc-600 ml-3">-</span>
-                )}
               </span>
             ))}
           </div>
@@ -76,8 +85,8 @@ export default function HeroSection({ content }) {
               variant="ghost"
               className="!bg-blue-700 hover:!bg-blue-800 !text-white dark:!text-white shadow-md shadow-blue-700/20"
             >
-              <a href={content.paperLink} target="_blank" rel="noopener noreferrer">
-                <FileText className="mr-2 h-4 w-4" /> Paper
+              <a href={effectiveToolLink} target="_blank" rel="noopener noreferrer">
+                <Play className="mr-2 h-4 w-4" /> Tool
               </a>
             </Button>
 
@@ -96,8 +105,8 @@ export default function HeroSection({ content }) {
               variant="outline"
               className="border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
             >
-              <a href={content.demoLink}>
-                <Play className="mr-2 h-4 w-4" /> Demo
+              <a href={effectivePaperLink} target="_blank" rel="noopener noreferrer">
+                <FileText className="mr-2 h-4 w-4" /> Paper
               </a>
             </Button>
 

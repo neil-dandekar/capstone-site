@@ -21,7 +21,7 @@ export default function BibtexSection({ bibtex }) {
             <div className="max-w-3xl mx-auto px-6">
                 <FadeInSection>
                     <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">
-                        Citation
+                        Bibtex
                     </h2>
                     <div className="h-1 w-12 rounded-full bg-blue-600 mb-8" />
                 </FadeInSection>

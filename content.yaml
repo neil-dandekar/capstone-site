@@ -11,12 +11,14 @@ authors:
       affiliation: "UC San Diego"
       link: "mailto:lweng@ucsd.edu"
 
-venue: "DSC 180AB Capstone (Winter 2026)"
+venue: "HDSI Capstone (Winter 2026)"
 paperLink: null
+paperPlaceholderLink: "https://github.com/neil-dandekar/capstone"
 codeLink: "https://github.com/neil-dandekar/capstone"
+toolLink: "https://chguerra15.github.io/capstone-site/"
 demoLink: "https://chguerra15.github.io/capstone-site/"
 
-teaserImage: "GUI.png"
+teaserImage: "src/assets/cbllm.png"
 teaserCaption: "Type a sentence, move concept sliders, and watch the model’s prediction change in real time."
 
 abstract: >
@@ -43,7 +45,7 @@ method:
         route decisions through a small set of interpretable concepts. Those concepts act like readable,
         editable “dials” that influence the final output. We reproduced key CB-LLM results and built an
         interactive interface that lets you intervene on concept neurons in real time.
-    image: "sankeygraph.png"
+    image: "src/assets/cbllm.png"
     imageCaption: "Concept contribution visualization: which concepts push the model toward each class."
     technicalDetails: |-
         **Optional technical note (expand/collapse on the site):**
@@ -64,9 +66,9 @@ demo:
 results:
     heading: "What we found"
     figures:
-        - image: "GUI.png"
+        - image: "src/assets/cbllm.png"
           caption: "Intervention interface: concept sliders expose and modify internal reasoning."
-        - image: "sankeygraph.png"
+        - image: "src/assets/cbllm.png"
           caption: "Concept contributions: a readable map from concepts to predictions."
     findings:
         - "We reproduced key CB-LLM trends across multiple benchmark datasets."
@@ -89,7 +91,7 @@ summary:
         - "A practical bridge between interpretability research and usable tooling."
 
 bibtex: |-
-    @misc{dandekar2026opening,
+    @misc{hdsicapstone2026,
       title        = {Opening the Bottleneck: Steering LLMs via Concept Intervention},
       author       = {Dandekar, Neil and Guerra, Christian and Weng, Lily},
       year         = {2026},

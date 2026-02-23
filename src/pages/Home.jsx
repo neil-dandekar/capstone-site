@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import AbstractSection from "@/components/research/AbstractSection";
 import BibtexSection from "@/components/research/BibtexSection";
-import DemoSection from "@/components/research/DemoSection";
 import FooterSection from "@/components/research/FooterSection";
 import HeroSection from "@/components/research/HeroSection";
 import MethodSection from "@/components/research/MethodSection";
 import MotivationSection from "@/components/research/MotivationSection";
 import ResultsSection from "@/components/research/ResultsSection";
-import SummarySection from "@/components/research/SummarySection";
 import ThemeToggle from "@/components/research/ThemeToggle";
 import siteContent from "@/config/siteContent";
 
@@ -30,12 +27,9 @@ export default function Home() {
         <hr className="border-zinc-200 dark:border-zinc-800" />
       </div>
 
-      <AbstractSection text={siteContent.abstract} />
       <MotivationSection data={siteContent.motivation} />
       <MethodSection data={siteContent.method} />
-      <DemoSection data={siteContent.demo} />
       <ResultsSection data={siteContent.results} />
-      <SummarySection data={siteContent.summary} />
       <BibtexSection bibtex={siteContent.bibtex} />
       <FooterSection data={siteContent.footer} />
     </div>
