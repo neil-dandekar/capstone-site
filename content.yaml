@@ -1,0 +1,104 @@
+title: "Opening the Bottleneck: Steering LLMs via Concept Intervention"
+tagline: "A hands-on demo for steering language models by editing interpretable concepts."
+authors:
+    - name: "Neil Dandekar"
+      affiliation: "UC San Diego"
+      link: "mailto:nmdandekar@ucsd.edu"
+    - name: "Christian Guerra"
+      affiliation: "UC San Diego"
+      link: "mailto:chguerra@ucsd.edu"
+    - name: "Lily Weng"
+      affiliation: "UC San Diego"
+      link: "mailto:lweng@ucsd.edu"
+
+venue: "DSC 180AB Capstone (Winter 2026)"
+paperLink: null
+codeLink: "https://github.com/neil-dandekar/capstone"
+demoLink: "https://chguerra15.github.io/capstone-site/"
+
+teaserImage: "GUI.png"
+teaserCaption: "Type a sentence, move concept sliders, and watch the model’s prediction change in real time."
+
+abstract: >
+    Modern language models can be powerful, but they are hard to understand and hard to control.
+    We built a concept-based interface that exposes interpretable “concept knobs” (like topic or
+    sentiment). By editing these concepts, anyone can directly test which ideas drive predictions
+    and see causal effects instantly.
+
+motivation:
+    heading: "Why this matters"
+    text: >
+        Language models increasingly influence real decisions, but most of the time we can’t explain
+        why they say what they say. That makes it difficult to trust them, debug mistakes, or safely
+        deploy them in high-stakes settings. Our project explores a simple idea: what if a model had
+        visible, human-understandable “controls” you could adjust to see how its output changes?
+    image: null
+    imageCaption: null
+
+# IMPORTANT: This key must be "method" for your loader/components
+method:
+    heading: "How it works (in one minute)"
+    text: >
+        Instead of going straight from hidden neural features to a prediction, Concept Bottleneck LLMs
+        route decisions through a small set of interpretable concepts. Those concepts act like readable,
+        editable “dials” that influence the final output. We reproduced key CB-LLM results and built an
+        interactive interface that lets you intervene on concept neurons in real time.
+    image: "sankeygraph.png"
+    imageCaption: "Concept contribution visualization: which concepts push the model toward each class."
+    technicalDetails: |-
+        **Optional technical note (expand/collapse on the site):**
+        - Backbone encodes text → bottleneck layer outputs concept activations.
+        - A sparse linear head maps concepts to the predicted class.
+        - Interventions scale concept activations (suppress, preserve, amplify), then recompute outputs.
+
+demo:
+    heading: "Interactive demo"
+    text: >
+        Try entering a sentence, then suppress or amplify concept sliders to see how the model’s
+        prediction changes instantly. This makes interpretability tangible: you can probe causal
+        influence instead of only reading explanations after the fact.
+    videoUrl: null
+    gifUrl: null
+    gifCaption: null
+
+results:
+    heading: "What we found"
+    figures:
+        - image: "GUI.png"
+          caption: "Intervention interface: concept sliders expose and modify internal reasoning."
+        - image: "sankeygraph.png"
+          caption: "Concept contributions: a readable map from concepts to predictions."
+    findings:
+        - "We reproduced key CB-LLM trends across multiple benchmark datasets."
+        - "Some concept neurons align with clear, human-meaningful themes (e.g., ‘Sports’ on AG News)."
+        - "Intervening on these neurons causally shifts predictions in predictable directions."
+        - "Multi-neuron edits reveal interactions and can reduce errors from noisy or diffuse signals."
+
+# IMPORTANT: This key must be "summary" for your loader/components
+summary:
+    heading: "Summary & impact"
+    text: >
+        This project turns interpretability into something you can interact with. Instead of only
+        showing explanations, we provide a real-time interface for testing how concepts affect model
+        decisions. The result is a public demo and a research tool for exploring transparency and
+        controllability in modern language models.
+    highlights:
+        - "Public, interactive concept intervention demo (easy to understand, fun to explore)."
+        - "Reproduction study validating CB-LLM behavior across benchmark datasets."
+        - "Multi-neuron intervention workflow for probing concept interactions."
+        - "A practical bridge between interpretability research and usable tooling."
+
+bibtex: |-
+    @misc{dandekar2026opening,
+      title        = {Opening the Bottleneck: Steering LLMs via Concept Intervention},
+      author       = {Dandekar, Neil and Guerra, Christian and Weng, Lily},
+      year         = {2026},
+      note         = {UC San Diego DSC 180AB Capstone},
+      howpublished = {\url{https://github.com/neil-dandekar/capstone}}
+    }
+
+footer:
+    contactEmail: "nmdandekar@ucsd.edu"
+    githubLink: "https://github.com/neil-dandekar/capstone"
+    citationNote: "If you build on this work, please cite it using the BibTeX above."
+    copyright: "(c) 2026 Dandekar, Guerra, Weng — UC San Diego"

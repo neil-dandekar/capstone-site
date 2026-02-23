@@ -7,9 +7,9 @@ import HeroSection from "@/components/research/HeroSection";
 import MethodSection from "@/components/research/MethodSection";
 import MotivationSection from "@/components/research/MotivationSection";
 import ResultsSection from "@/components/research/ResultsSection";
-import siteContent from "@/components/research/siteContent";
 import SummarySection from "@/components/research/SummarySection";
 import ThemeToggle from "@/components/research/ThemeToggle";
+import siteContent from "@/config/siteContent";
 
 export default function Home() {
   const [dark, setDark] = useState(true);
